@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
 
 export default function LoadingScreen({ onLoadingComplete }) {
-  const [phase, setPhase] = useState('loading');
+  const [phase, setPhase] = useState('text');
 
   useEffect(() => {
+    const textTimer = setTimeout(() => {
+      setPhase('loading');
+    }, 2800);
+
     const logoTimer = setTimeout(() => {
       setPhase('opening');
-    }, 2000);
+    }, 3800);
 
     const completeTimer = setTimeout(() => {
       onLoadingComplete();
-    }, 3300);
+    }, 5100);
 
     return () => {
+      clearTimeout(textTimer);
       clearTimeout(logoTimer);
       clearTimeout(completeTimer);
     };
@@ -20,12 +25,32 @@ export default function LoadingScreen({ onLoadingComplete }) {
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a]">
+      <div className="absolute inset-0 bg-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(189,254,78,0.08),transparent_60%)]"></div>
       </div>
 
+      {phase === 'text' && (
+        <div className="absolute inset-0 flex items-center justify-center z-100">
+          <div className="text-center">
+            <h1 className="text-7xl font-bold tracking-wider text-white">
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '0ms' }}>E</span>
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '50ms' }}>V</span>
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '100ms' }}>O</span>
+              <span className="inline-block animate-letter-fade text-[#BDFE4E]" style={{ animationDelay: '300ms' }}>x</span>
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '200ms' }}>C</span>
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '300ms' }}>h</span>
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '400ms' }}>a</span>
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '500ms' }}>r</span>
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '600ms' }}>g</span>
+              <span className="inline-block animate-letter-fade" style={{ animationDelay: '700ms' }}>e</span>
+            </h1>
+            <div className="h-1 bg-gradient-to-r from-transparent via-[#BDFE4E] to-transparent mt-6 animate-line-expand"></div>
+          </div>
+        </div>
+      )}
+
       <div className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
-        phase === 'opening' ? 'scale-125 opacity-0' : 'scale-100 opacity-100'
+        phase === 'loading' ? 'scale-100 opacity-100' : phase === 'opening' ? 'scale-125 opacity-0' : 'scale-90 opacity-0'
       }`}>
         <div className="relative" style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -102,14 +127,14 @@ export default function LoadingScreen({ onLoadingComplete }) {
       </div>
 
       <div className="absolute inset-0 flex pointer-events-none">
-        <div className={`absolute inset-y-0 left-0 w-1/2 bg-[#0a0a0a] transition-transform duration-[1200ms] ease-in-out z-50 ${
+        <div className={`absolute inset-y-0 left-0 w-1/2 bg-black transition-transform duration-[1200ms] ease-in-out z-50 ${
           phase === 'opening' ? '-translate-x-full' : 'translate-x-0'
         }`} style={{
           boxShadow: phase === 'opening' ? '10px 0 40px rgba(189,254,78,0.4)' : 'none',
           borderRight: phase === 'opening' ? '1px solid rgba(189,254,78,0.3)' : 'none'
         }}>
         </div>
-        <div className={`absolute inset-y-0 right-0 w-1/2 bg-[#0a0a0a] transition-transform duration-[1200ms] ease-in-out z-50 ${
+        <div className={`absolute inset-y-0 right-0 w-1/2 bg-black transition-transform duration-[1200ms] ease-in-out z-50 ${
           phase === 'opening' ? 'translate-x-full' : 'translate-x-0'
         }`} style={{
           boxShadow: phase === 'opening' ? '-10px 0 40px rgba(189,254,78,0.4)' : 'none',
@@ -119,6 +144,41 @@ export default function LoadingScreen({ onLoadingComplete }) {
       </div>
 
       <style>{`
+        @keyframes letter-fade {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-letter-fade {
+          animation: letter-fade 0.6s ease-out forwards;
+          opacity: 0;
+        }
+
+        @keyframes line-expand {
+          0% {
+            width: 0;
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            width: 100%;
+            opacity: 1;
+          }
+        }
+
+        .animate-line-expand {
+          animation: line-expand 1s ease-out 1s forwards;
+          width: 0;
+        }
+
         @keyframes draw-line {
           from {
             stroke-dasharray: 141;
