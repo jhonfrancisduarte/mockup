@@ -1,11 +1,171 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Zap, Share2, Linkedin, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 
-const Footer = () => {
+// Footer with hover-to-open + click-to-pin behavior and "Get in touch" contact column
+export default function Footer() {
+  const [pinned, setPinned] = useState(false); // toggled by click
+  const [hover, setHover] = useState(false); // true while mouse is over widget
+
+  const footerLinks = {
+    'EV Drivers': [
+      'XCharge+ Mobile App',
+      'How to Charge',
+      'XCharge+ Web Platform',
+      'Home Charging Solutions',
+      'EV Chargers'
+    ],
+    'Business Solutions': ['Host a Site', 'Partner with Us', 'Sustainability', 'Newsroom'],
+    'Ecosystem': ['XCharge+ Mobile App', 'About us', 'Careers', 'Subheading/Slogan'],
+    'Company': ['About us', 'Newsroom', 'Careers', 'Sustainability'],
+    'Support': ['FAQ', 'How to Charge', 'Home Charging Solutions']
+  };
+
+  const socials = [
+    { name: 'LinkedIn', icon: Linkedin, url: '#', color: 'hover:bg-[#0077B5]' },
+    {
+      name: 'Instagram',
+      icon: Instagram,
+      url: '#',
+      color: 'hover:bg-gradient-to-br hover:from-[#833AB4] hover:via-[#FD1D1D] hover:to-[#F77737]'
+    },
+    { name: 'Facebook', icon: Facebook, url: '#', color: 'hover:bg-[#1877F2]' }
+  ];
+
+  // visible when pinned OR hovered
+  const visible = pinned || hover;
+
   return (
-    <div className='border-t bg-black text-white text-center'>
-Bryan Pogi 123
-    </div>
-  )
-}
+    <>
+      {/* Footer */}
+      <footer className="relative border-t border-gray-800 bg-[#0a0a0a] text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 1px 1px, rgba(189, 254, 78, 0.3) 1px, transparent 0)',
+              backgroundSize: '40px 40px'
+            }}
+          />
+        </div>
 
-export default Footer
+        <div className="relative z-10 container mx-auto px-4 py-16">
+          {/* Use 6 columns on large screens to accommodate the contact column */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category}>
+                <h3 className="text-[#BDFE4E] font-bold text-lg mb-4">{category}</h3>
+                <ul className="space-y-2">
+                  {links.map((link) => (
+                    <li key={link}>
+                      <a href="#" className="text-gray-400 hover:text-[#BDFE4E] transition-colors duration-300 text-sm">
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            {/* Get in touch column */}
+            <div>
+              <h3 className="text-[#BDFE4E] font-bold text-lg mb-4">Get in touch</h3>
+
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li className="flex items-start gap-3">
+                  <Mail size={18} className="text-[#BDFE4E] mt-1 flex-shrink-0" />
+                  <a href="mailto:evoxcharge@tdgworld.com" className="break-words hover:text-[#BDFE4E]">
+                    evoxcharge@tdgworld.com
+                  </a>
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <Phone size={18} className="text-[#BDFE4E] mt-1 flex-shrink-0" />
+                  <a href="tel:+639399320844" className="hover:text-[#BDFE4E]">0939 932 0844</a>
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <MapPin size={18} className="text-[#BDFE4E] mt-1 flex-shrink-0" />
+                  <address className="not-italic leading-snug">
+                    TDG Inhub AFP-RSBS Industrial Park<br />
+                    KM12 cor C5, Wester Bicutan,<br />
+                    Taguig, Philippines
+                  </address>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#BDFE4E] rounded-lg flex items-center justify-center">
+                <Zap size={20} className="text-black" />
+              </div>
+              <span className="font-bold text-xl">xCharge+</span>
+            </div>
+
+            <p className="text-gray-400 text-sm text-center">
+              © 2025 xCharge+. All rights reserved. Powering the future of electric mobility.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Floating Social Media Widget - placed outside footer to avoid clipping */}
+      <div
+        className="fixed bottom-8 right-8 z-50"
+        // Hover handlers for desktop: show socials while hovering the whole widget area
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        // Touch: toggle pin on touchstart (improves mobile UX)
+        onTouchStart={(e) => {
+          // prevent the onMouseEnter from firing in some environments
+          e.stopPropagation();
+        }}
+      >
+        <div className="relative">
+          {/* Social Icons - Expand on Hover/Click (visible when `visible` is true) */}
+          <div
+            id="floating-socials"
+            className={`absolute bottom-16 right-0 z-10 flex flex-col gap-3 transition-all duration-300 transform ${
+              visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
+            }`}
+            aria-hidden={!visible}
+          >
+            {socials.map((social, index) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mb-4 group w-14 h-14 bg-[#1a1a1a] border border-gray-800 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 ${
+                    social.color
+                  } hover:border-transparent shadow-lg hover:shadow-2xl`}
+                  style={{ transitionDelay: visible ? `${index * 50}ms` : '0ms' }}
+                  title={social.name}
+                >
+                  <Icon size={24} className="text-white" />
+                </a>
+              );
+            })}
+          </div>
+          {!visible && <div className="absolute inset-0 w-16 h-16 bg-[#BDFE4E] rounded-full animate-ping opacity-20 pointer-events-none" />}
+          <button
+            onClick={() => setPinned((v) => !v)}
+            aria-pressed={pinned}
+            aria-expanded={visible}
+            aria-controls="floating-socials"
+            className={`z-20 w-16 h-16 bg-gradient-to-br from-[#BDFE4E] to-[#a5e63c] rounded-full flex items-center justify-center shadow-2xl hover:shadow-[#BDFE4E]/50 transition-all duration-300 transform hover:scale-110 ${
+              visible ? 'rotate-45' : 'rotate-0'
+            }`}
+            aria-label="Toggle Social Media"
+          >
+            <Share2 size={28} className="text-black" />
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}

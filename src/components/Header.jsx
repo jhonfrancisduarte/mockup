@@ -16,7 +16,7 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#' },
+   /*  { name: 'Home', href: '#' }, */
     {
       name: 'EV Drivers',
       href: '#',
@@ -114,7 +114,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
             <button className="relative px-6 py-2 bg-[#BDFE4E] text-nowrap text-black font-semibold rounded-lg hover:bg-[#a8e842] transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-              <span className="relative z-10">Get Started</span>
+              <span className="relative z-10">Contact Us</span>
             </button>
           </div>
 
@@ -178,7 +178,7 @@ const Header = () => {
             {/* Mobile CTA Buttons */}
             <div className="pt-4 px-4 space-y-3 border-t border-gray-800">
               <button className="w-full py-3 bg-[#BDFE4E] text-black font-semibold rounded-lg hover:bg-[#a8e842] transition-all duration-300">
-                Get Started
+                Contact Us
               </button>
             </div>
           </div>
