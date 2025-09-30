@@ -16,6 +16,7 @@ import news3 from '../assets/news3.png';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const [sectionsVisible, setSectionsVisible] = useState({
     section1: false,
     section2: false,
@@ -59,6 +60,12 @@ export default function Hero() {
   useEffect(() => {
     setIsVisible(true);
 
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,7 +88,10 @@ export default function Hero() {
       });
     }, 100);
 
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -106,27 +116,59 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const parallaxOffset = scrollY * 0.5;
+  const opacityValue = Math.max(0, 1 - scrollY / 600);
+
   return (
     <>
       {/* Main Hero Section */}
       <section className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
+        {/* Animated Circuit Pattern Background */}
+        <div className="absolute inset-0 opacity-30">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="circuit-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                <circle cx="10" cy="10" r="2" fill="#BDFE4E" opacity="0.3" />
+                <circle cx="90" cy="90" r="2" fill="#BDFE4E" opacity="0.3" />
+                <circle cx="50" cy="50" r="2" fill="#BDFE4E" opacity="0.5" />
+
+                <line x1="10" y1="10" x2="50" y2="50" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
+                <line x1="50" y1="50" x2="90" y2="90" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
+
+                <rect x="48" y="48" width="4" height="4" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.3" />
+                <rect x="8" y="8" width="4" height="4" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.3" />
+                <rect x="88" y="88" width="4" height="4" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.3" />
+
+                <line x1="30" y1="10" x2="30" y2="30" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
+                <line x1="30" y1="30" x2="50" y2="30" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
+
+                <line x1="70" y1="50" x2="70" y2="70" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
+                <line x1="50" y1="70" x2="70" y2="70" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
+
+                <circle cx="30" cy="30" r="1.5" fill="#BDFE4E" opacity="0.4" />
+                <circle cx="70" cy="70" r="1.5" fill="#BDFE4E" opacity="0.4" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#circuit-pattern)" />
+          </svg>
+        </div>
+
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#BDFE4E]/5 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-[#BDFE4E]/3 rounded-full blur-2xl animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#BDFE4E]/5 rounded-full blur-lg animate-bounce delay-500"></div>
         </div>
 
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(189, 254, 78, 0.3) 1px, transparent 0)',
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
-
         <div className="relative z-10 container mx-auto px-4 pt-20 lg:pt-24 min-h-screen flex items-center">
           <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
 
-            <div className={`space-y-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+            <div
+              className={`space-y-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
+              style={{
+                transform: `translateY(${parallaxOffset * 0.3}px)`,
+                opacity: opacityValue
+              }}
+            >
 
               <div className="inline-flex items-center gap-2 bg-[#BDFE4E]/10 text-[#BDFE4E] px-4 py-2 rounded-full text-sm font-medium border border-[#BDFE4E]/30">
                 <Zap size={16} className="animate-pulse" />
@@ -149,11 +191,11 @@ export default function Hero() {
               <div className="flex flex-wrap gap-4 text-gray-300">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-[#BDFE4E] rounded-full animate-ping"></div>
-                  <span>24/7 Support</span>
+                  <span>Easy to use</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-[#BDFE4E] rounded-full animate-ping delay-200"></div>
-                  <span>Fast Charging</span>
+                  <span>Reliable Charging</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-[#BDFE4E] rounded-full animate-ping delay-500"></div>
@@ -184,7 +226,13 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className={`relative transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            <div
+              className={`relative transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
+              style={{
+                transform: `translateY(${parallaxOffset * 0.5}px)`,
+                opacity: opacityValue
+              }}
+            >
               <div className="relative mx-auto w-80 h-96">
                 <div className="absolute top-10 right-10 z-20 animate-float">
                   <div className="w-48 h-96 bg-[#1a1a1a] rounded-3xl p-2 shadow-2xl border border-gray-800">
@@ -239,6 +287,19 @@ export default function Hero() {
               </div>
             </div>
 
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+          style={{ opacity: Math.max(0, 1 - scrollY / 300) }}
+        >
+          <div className="flex flex-col items-center gap-2 animate-bounce">
+            <span className="text-[#BDFE4E] text-sm">Scroll to explore</span>
+            <div className="w-6 h-10 border-2 border-[#BDFE4E] rounded-full flex items-start justify-center p-2">
+              <div className="w-1 h-3 bg-[#BDFE4E] rounded-full animate-pulse"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -496,7 +557,6 @@ export default function Hero() {
                   }`}>
                     <div className="absolute inset-0 bg-gradient-to-br from-[#BDFE4E]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                    {/* Number Overlay */}
                     <div className="absolute -top-8 -left-6 z-20 pointer-events-none">
                       <div className={`font-bold text-[180px] leading-none transition-colors duration-500 ${
                         isActive
@@ -507,7 +567,6 @@ export default function Hero() {
                       </div>
                     </div>
 
-                    {/* IMAGE */}
                     <div className="h-64 relative overflow-hidden">
                       <img
                         src={step.image}
@@ -563,14 +622,12 @@ export default function Hero() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* News Card 1 */}
             <div
               className={`group relative transition-all duration-1000 ${sectionsVisible.newsSection ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             >
               <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden border border-gray-800 hover:border-[#BDFE4E]/50 transition-all duration-500 h-full flex flex-col relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#BDFE4E]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                {/* IMAGE */}
                 <div className="h-64 relative overflow-hidden">
                   <img
                     src={news1}
@@ -612,14 +669,12 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* News Card 2 */}
             <div
               className={`group relative transition-all duration-1000 delay-200 ${sectionsVisible.newsSection ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             >
               <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden border border-gray-800 hover:border-[#BDFE4E]/50 transition-all duration-500 h-full flex flex-col relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#BDFE4E]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                {/* IMAGE */}
                 <div className="h-64 relative overflow-hidden">
                   <img
                     src={news2}
@@ -659,14 +714,12 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* News Card 3 */}
             <div
               className={`group relative transition-all duration-1000 delay-400 ${sectionsVisible.newsSection ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             >
               <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden border border-gray-800 hover:border-[#BDFE4E]/50 transition-all duration-500 h-full flex flex-col relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#BDFE4E]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                {/* IMAGE */}
                 <div className="h-64 relative overflow-hidden">
                   <img
                     src={news3}
