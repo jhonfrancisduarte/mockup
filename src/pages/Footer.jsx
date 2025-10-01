@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Zap, Share2, Linkedin, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import Logo from "../assets/logo.webp"
 
-// Footer with hover-to-open + click-to-pin behavior and "Get in touch" contact column
 export default function Footer() {
-  const [pinned, setPinned] = useState(false); // toggled by click
-  const [hover, setHover] = useState(false); // true while mouse is over widget
+  const [pinned, setPinned] = useState(false);
+  const [hover, setHover] = useState(false);
 
   const footerLinks = {
     'EV Drivers': [
@@ -37,7 +37,7 @@ export default function Footer() {
   return (
     <>
       {/* Footer */}
-      <footer className="relative border-t border-gray-800 bg-[#0a0a0a] text-white overflow-hidden">
+      <footer className="relative border-t border-gray-800 bg-[#2a2a2a] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div
             className="absolute inset-0"
@@ -98,10 +98,10 @@ export default function Footer() {
 
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#BDFE4E] rounded-lg flex items-center justify-center">
-                <Zap size={20} className="text-black" />
+              <div className="rounded-lg flex items-center justify-center">
+                <img src={Logo} alt="" className='h-12' />
               </div>
-              <span className="font-bold text-xl">EVOxCharge</span>
+
             </div>
 
             <p className="text-gray-400 text-sm text-center">
@@ -111,19 +111,16 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Floating Social Media Widget - placed outside footer to avoid clipping */}
       <div
         className="fixed bottom-8 right-8 z-50"
-        // Hover handlers for desktop: show socials while hovering the whole widget area
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        // Touch: toggle pin on touchstart (improves mobile UX)
         onTouchStart={(e) => {
           e.stopPropagation();
         }}
       >
         <div className="relative">
-          {/* Social Icons - Expand on Hover/Click (visible when `visible` is true) */}
+
           <div
             id="floating-socials"
             className={`absolute bottom-16 right-0 z-10 flex flex-col gap-3 transition-all duration-300 transform ${

@@ -4,6 +4,7 @@ import './index.css';
 import Header from "./components/Header";
 import Footer from "./pages/Footer";
 import LoadingScreen from "./components/LoadingScreen";
+import MobileApp from "./pages/MobileApp"
 
 function App() {
   const [showContent, setShowContent] = useState(false);
@@ -18,6 +19,7 @@ function App() {
         <>
           <Header />
           <Hero />
+
           <Footer />
         </>
       )}

@@ -3,6 +3,7 @@ import Xlogo from '../assets/xlogoo.png'
 
 export default function LoadingScreen({ onLoadingComplete }) {
   const [phase, setPhase] = useState('text');
+  const [logo, setLogoImg] = useState('png')
 
   useEffect(() => {
     const textTimer = setTimeout(() => {
@@ -17,10 +18,14 @@ export default function LoadingScreen({ onLoadingComplete }) {
       onLoadingComplete();
     }, 5100);
 
+    const logoImg = setTimeout(() => {
+      setLogoImg();
+    }, 8000);
     return () => {
       clearTimeout(textTimer);
       clearTimeout(logoTimer);
       clearTimeout(completeTimer);
+      clearTimeout(logoImg);
     };
   }, [onLoadingComplete]);
 
@@ -31,19 +36,19 @@ export default function LoadingScreen({ onLoadingComplete }) {
       </div>
 
 {phase === 'text' && (
-  <div className="absolute inset-0 flex items-center justify-center z-100">
+  <div className="absolute inset-0 flex items-center gap-0 justify-center z-100">
     <div className="text-center">
       <h1 className="text-7xl font-light tracking-tight text-white" style={{ fontFamily: 'Comfortaa, sans-serif' }}>
         <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '0ms' }}>e</span>
         <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '50ms' }}>v</span>
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '100ms' }}>o</span>
+        <span className="inline-block animate-letter-fade font-medium m-0 p-0" style={{ animationDelay: '100ms' }}>o</span>
         <span
-          className="inline-block animate-letter-fade align-middle"
+          className="inline-block animate-letter-fade align-middle relative"
           style={{ animationDelay: '300ms' }}
         >
           <img
             src={Xlogo}
-            className="inline-block h-[110px] w-auto align-middle"
+            className="inline-block h-[110px] w-auto align-middle gap-0 ml-0 mr-0"
             alt="logo"
           />
         </span>

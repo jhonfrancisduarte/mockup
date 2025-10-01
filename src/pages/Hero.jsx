@@ -173,7 +173,7 @@ export default function Hero() {
 
               <div className="inline-flex items-center gap-2 bg-[#BDFE4E]/10 text-[#BDFE4E] px-4 py-2 rounded-full text-sm font-medium border border-[#BDFE4E]/30">
                 <Zap size={16} className="animate-pulse" />
-                Mga Pogi ang nasa xcharge
+                POWERING THE FUTURE
               </div>
 
               <div className="space-y-4">
@@ -205,7 +205,7 @@ export default function Hero() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button className="group flex items-center gap-3 bg-black hover:bg-gray-800 text-white px-6 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-gray-700">
+                <button className="cursor-pointer group flex items-center gap-3 bg-black hover:bg-gray-800 text-white px-6 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-gray-700">
                   <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
                     <img src={GooglePlay} alt="Google Play" className="w-auto h-10 object-contain" />
                   </div>
@@ -215,7 +215,7 @@ export default function Hero() {
                   </div>
                 </button>
 
-                <button className="group flex items-center gap-3 bg-black hover:bg-gray-800 text-white px-6 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-gray-700">
+                <button className="cursor-pointer group flex items-center gap-3 bg-black hover:bg-gray-800 text-white px-6 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-gray-700">
                   <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
                     <img src={AppStore} alt="App Store" className="w-auto h-10 object-contain" />
                   </div>
@@ -413,11 +413,11 @@ export default function Hero() {
         </div>
       </section>
 
-      <section className="bg-[#0a0a0a] py-20 border-t border-gray-800">
+      <section className="bg-[#2A2A2A] py-20 border-t border-gray-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Evo <span className="text-[#BDFE4E]">XCharge</span> for All
+              Evo <span className="text-[#BDFE4E]">xCharge</span> for All
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Comprehensive electric vehicle charging solutions designed for every need, from individual drivers to enterprise fleets.
@@ -537,8 +537,8 @@ export default function Hero() {
               <div className="w-12 h-12 bg-[#BDFE4E]/10 rounded-xl flex items-center justify-center mb-4">
                 <MapPin size={24} className="text-[#BDFE4E]" />
               </div>
-              <div className="text-4xl font-bold text-white mb-2">50+</div>
-              <div className="text-gray-400">Charging Stations</div>
+              <div className="text-4xl font-bold text-white mb-2">100+</div>
+              <div className="text-gray-400">Charging points</div>
             </div>
 
             <div
@@ -547,7 +547,7 @@ export default function Hero() {
               <div className="w-12 h-12 bg-[#BDFE4E]/10 rounded-xl flex items-center justify-center mb-4">
                 <Globe size={24} className="text-[#BDFE4E]" />
               </div>
-              <div className="text-4xl font-bold text-white mb-2">30+</div>
+              <div className="text-4xl font-bold text-white mb-2">50+</div>
               <div className="text-gray-400">Cities Covered</div>
             </div>
 
@@ -558,7 +558,7 @@ export default function Hero() {
                 <Zap size={24} className="text-[#BDFE4E]" />
               </div>
               <div className="text-4xl font-bold text-white mb-2">1M+</div>
-              <div className="text-gray-400">Charging Sessions</div>
+              <div className="text-gray-400">Users</div>
             </div>
 
             <div
@@ -632,7 +632,7 @@ export default function Hero() {
         </div>
       </section>
 
-      <section id="howToCharge" className="bg-[#0a0a0a] py-20 border-t border-gray-800 overflow-hidden">
+      <section id="howToCharge" className="bg-[#2A2A2A] py-20 border-t border-gray-800 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className={`text-center mb-16 transition-all duration-1000 ${sectionsVisible.howToCharge ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -642,7 +642,13 @@ export default function Hero() {
               Simple steps to power up your vehicle in minutes
             </p>
           </div>
-
+ <section>
+  <div class="wave">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</section>
           <div className="grid md:grid-cols-5 gap-6">
             {steps.map((step, index) => {
               const isActive = index <= activeStep;
