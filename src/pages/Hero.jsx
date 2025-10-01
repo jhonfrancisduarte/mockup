@@ -14,6 +14,9 @@ import news1 from '../assets/news1.png';
 import news2 from '../assets/news2.png';
 import news3 from '../assets/news3.png';
 
+import Phone1 from '../assets/appphone3.png'
+import Phone2 from '../assets/appphone2.png'
+
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -121,9 +124,9 @@ export default function Hero() {
 
   return (
     <>
-      {/* Main Hero Section */}
+      {/* main sect */}
       <section className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
-        {/* Animated Circuit Pattern Background */}
+        {/* bg*/}
         <div className="absolute inset-0 opacity-30">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -169,6 +172,16 @@ export default function Hero() {
                 opacity: opacityValue
               }}
             >
+
+     {/*          <div className='bg-amber-400 text-3xl border-2'>
+                <button>
+                  <select name="text1" id="">EvoXcharge</select>
+                 <select name="text2" id="">EvoXcharge</select>
+                  <select name="text3" id="">EvoXcharge</select>
+                  <option value="1"></option>
+                </button>
+
+              </div> */}
 
               <div className="inline-flex items-center gap-2 bg-[#BDFE4E]/10 text-[#BDFE4E] px-4 py-2 rounded-full text-sm font-medium border border-[#BDFE4E]/30">
                 <Zap size={16} className="animate-pulse" />
@@ -233,60 +246,12 @@ export default function Hero() {
                 opacity: opacityValue
               }}
             >
-              <div className="relative mx-auto w-80 h-96">
-                <div className="absolute top-10 right-10 z-20 animate-float">
-                  <div className="w-48 h-96 bg-[#1a1a1a] rounded-3xl p-2 shadow-2xl border border-gray-800">
-                    <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
-                      <div className="bg-[#0a0a0a] h-full p-6">
-                        <div className="text-center space-y-4">
-                          <div className="w-12 h-12 bg-[#BDFE4E] rounded-2xl mx-auto flex items-center justify-center">
-                            <Zap size={24} className="text-black" />
-                          </div>
-                          <h3 className="font-bold text-white">xCharge+</h3>
-                          <div className="space-y-2">
-                            <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
-                              <div className="h-full bg-[#BDFE4E] w-3/4 animate-pulse"></div>
-                            </div>
-                            <p className="text-sm text-gray-400">Charging: 75%</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-600 rounded-full"></div>
-                  </div>
-                </div>
 
-                <div className="absolute bottom-0 left-0 z-10 animate-float delay-300">
-                  <div className="w-32 h-48 bg-[#1a1a1a] rounded-2xl relative shadow-2xl border border-gray-800">
-                    <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-black rounded-full border-4 border-[#BDFE4E]">
-                      <div className="absolute inset-2 bg-[#BDFE4E] rounded-full animate-pulse"></div>
-                    </div>
-                    <div className="absolute bottom-0 right-0 w-1 h-24 bg-[#BDFE4E] transform rotate-45 origin-bottom animate-pulse"></div>
-                    <div className="absolute bottom-4 left-4 space-y-1">
-                      <div className="w-2 h-2 bg-[#BDFE4E] rounded-full animate-ping"></div>
-                      <div className="w-2 h-2 bg-[#BDFE4E] rounded-full animate-ping delay-200"></div>
-                      <div className="w-2 h-2 bg-[#BDFE4E] rounded-full animate-ping delay-500"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-10 right-20 z-5 animate-float delay-700">
-                  <div className="relative">
-                    <Car size={80} className="text-gray-700" />
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#BDFE4E] rounded-full animate-ping"></div>
-                  </div>
-                </div>
-
-                <div className="absolute top-0 left-0 animate-float delay-1000">
-                  <Smartphone size={24} className="text-[#BDFE4E]/60" />
-                </div>
-
-                <div className="absolute top-20 right-0 animate-float delay-1500">
-                  <Zap size={20} className="text-[#BDFE4E]/60" />
-                </div>
+              <div className='flex flex-row gap-0 relative ml-50'>
+              <img src={Phone1} className='h-100 w-auto relative ml-10' alt="" />
+              <img src={Phone2} className='h-100 w-auto rotate-50 absolute ml-70 z-[-1] mt-20' alt="" />
               </div>
             </div>
-
           </div>
         </div>
 
@@ -762,7 +727,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
     </>
   );
 }

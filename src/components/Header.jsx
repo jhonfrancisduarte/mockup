@@ -61,7 +61,7 @@ const Header = () => {
 
               {/* Logo */}
             <div className='border-b-amber-50'>
-            <img src={Logo} alt="" className='h-10 w-auto'/>
+            <img src={Logo} alt="" className='h-15 w-auto'/>
             </div>
 
               <div className="absolute -inset-1  rounded-xl opacity-0 transition-opacity duration-300 blur"></div>

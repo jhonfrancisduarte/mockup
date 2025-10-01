@@ -101,7 +101,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-[#BDFE4E] rounded-lg flex items-center justify-center">
                 <Zap size={20} className="text-black" />
               </div>
-              <span className="font-bold text-xl">xCharge+</span>
+              <span className="font-bold text-xl">EVOxCharge</span>
             </div>
 
             <p className="text-gray-400 text-sm text-center">
@@ -119,7 +119,6 @@ export default function Footer() {
         onMouseLeave={() => setHover(false)}
         // Touch: toggle pin on touchstart (improves mobile UX)
         onTouchStart={(e) => {
-          // prevent the onMouseEnter from firing in some environments
           e.stopPropagation();
         }}
       >

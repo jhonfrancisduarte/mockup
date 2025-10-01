@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { MapPin, Zap, Globe, TrendingUp } from 'lucide-react';
 
+
 export default function OurNetwork() {
   const [isVisible, setIsVisible] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
