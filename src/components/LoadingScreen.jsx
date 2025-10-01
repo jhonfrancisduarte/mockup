@@ -33,10 +33,10 @@ export default function LoadingScreen({ onLoadingComplete }) {
 {phase === 'text' && (
   <div className="absolute inset-0 flex items-center justify-center z-100">
     <div className="text-center">
-      <h1 className="text-7xl font-bold tracking-wider text-white">
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '0ms' }}>e</span>
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '50ms' }}>v</span>
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '100ms' }}>o</span>
+      <h1 className="text-7xl font-light tracking-tight text-white" style={{ fontFamily: 'Comfortaa, sans-serif' }}>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '0ms' }}>e</span>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '50ms' }}>v</span>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '100ms' }}>o</span>
         <span
           className="inline-block animate-letter-fade align-middle"
           style={{ animationDelay: '300ms' }}
@@ -48,15 +48,15 @@ export default function LoadingScreen({ onLoadingComplete }) {
           />
         </span>
 
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '200ms' }}>c</span>
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '300ms' }}>h</span>
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '400ms' }}>a</span>
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '500ms' }}>r</span>
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '600ms' }}>g</span>
-        <span className="inline-block animate-letter-fade" style={{ animationDelay: '700ms' }}>e</span>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '200ms' }}>c</span>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '300ms' }}>h</span>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '400ms' }}>a</span>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '500ms' }}>r</span>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '600ms' }}>g</span>
+        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '700ms' }}>e</span>
         <h1>
-        <span className="absolute mt-0 ml-5 text-sm inline-block animate-letter-fade" style={{ animationDelay: '700ms' }}>
-            Powering the Future
+        <span className="absolute mt-0 ml-5 text-sm font-light tracking-wider inline-block animate-letter-fade" style={{ animationDelay: '700ms', fontFamily: 'Comfortaa, sans-serif' }}>
+            POWERING THE FUTURE
           </span>
         </h1>
 

@@ -113,7 +113,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="relative px-6 py-2 bg-[#BDFE4E] text-nowrap text-black font-semibold rounded-lg hover:bg-[#a8e842] transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            <button className="cursor-pointer relative px-6 py-2 bg-[#BDFE4E] text-nowrap text-black font-semibold rounded-lg hover:bg-[#a8e842] transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
               <span className="relative z-10">Contact Us</span>
             </button>
           </div>
