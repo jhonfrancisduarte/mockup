@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Zap, Share2, Linkedin, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
-import Logo from "../assets/logo.webp"
+import Logo from "../../assets/logo.webp"
 
 export default function Footer() {
   const [pinned, setPinned] = useState(false);
@@ -31,12 +31,11 @@ export default function Footer() {
     { name: 'Facebook', icon: Facebook, url: '#', color: 'hover:bg-[#1877F2]' }
   ];
 
-  // visible when pinned OR hovered
   const visible = pinned || hover;
 
   return (
     <>
-      {/* Footer */}
+
       <footer className="relative border-t border-gray-800 bg-[#2a2a2a] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div
@@ -50,7 +49,6 @@ export default function Footer() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 py-16">
-          {/* Use 6 columns on large screens to accommodate the contact column */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
             {Object.entries(footerLinks).map(([category, links]) => (
               <div key={category}>
@@ -67,7 +65,6 @@ export default function Footer() {
               </div>
             ))}
 
-            {/* Get in touch column */}
             <div>
               <h3 className="text-[#BDFE4E] font-bold text-lg mb-4">Get in touch</h3>
 

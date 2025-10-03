@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import Hero from "./pages/Hero";
+import Hero from "./components/layout/Hero";
 import './index.css';
-import Header from "./components/Header";
-import Footer from "./pages/Footer";
-import LoadingScreen from "./components/LoadingScreen";
-import MobileApp from "./pages/MobileApp"
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import LoadingScreen from "./components/common/LoadingScreen";
 
 function App() {
   const [showContent, setShowContent] = useState(false);

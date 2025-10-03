@@ -36,7 +36,7 @@ export default function OurNetwork() {
   return (
     <section className="bg-[#0a0a0a] py-20 border-t border-gray-800">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
+        {/* header */}
         <div
           id="network-section"
           className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -49,12 +49,12 @@ export default function OurNetwork() {
           </p>
         </div>
 
-        {/* Stats Grid */}
+        {/* stats */}
         <div
           id="network-stats"
           className="grid md:grid-cols-4 gap-6 mb-16"
         >
-          {/* Stat 1 */}
+
           <div
             className={`bg-[#1a1a1a] rounded-2xl p-8 border border-gray-800 hover:border-[#BDFE4E]/30 transition-all duration-500 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
@@ -64,8 +64,6 @@ export default function OurNetwork() {
             <div className="text-4xl font-bold text-white mb-2">30+</div>
             <div className="text-gray-400">Charging Stations</div>
           </div>
-
-          {/* Stat 2 */}
           <div
             className={`bg-[#1a1a1a] rounded-2xl p-8 border border-gray-800 hover:border-[#BDFE4E]/30 transition-all duration-500 delay-100 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
@@ -75,8 +73,6 @@ export default function OurNetwork() {
             <div className="text-4xl font-bold text-white mb-2">20+</div>
             <div className="text-gray-400">Cities Covered</div>
           </div>
-
-          {/* Stat 3 */}
           <div
             className={`bg-[#1a1a1a] rounded-2xl p-8 border border-gray-800 hover:border-[#BDFE4E]/30 transition-all duration-500 delay-200 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
@@ -87,7 +83,6 @@ export default function OurNetwork() {
             <div className="text-gray-400">Charging Sessions</div>
           </div>
 
-          {/* Stat 4 */}
           <div
             className={`bg-[#1a1a1a] rounded-2xl p-8 border border-gray-800 hover:border-[#BDFE4E]/30 transition-all duration-500 delay-300 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
@@ -98,14 +93,11 @@ export default function OurNetwork() {
             <div className="text-gray-400">Uptime Rate</div>
           </div>
         </div>
-
-        {/* Map Visualization */}
         <div
           className={`relative bg-[#1a1a1a] rounded-3xl overflow-hidden border border-gray-800 transition-all duration-1000 delay-400 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          {/* Map Container */}
           <div className="h-96 relative bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] flex items-center justify-center">
-            {/* Animated Grid Background */}
+
             <div className="absolute inset-0 opacity-10">
               <div
                 className="absolute inset-0"
@@ -116,7 +108,7 @@ export default function OurNetwork() {
               ></div>
             </div>
 
-            {/* Animated Dots representing stations */}
+            {/* dots */}
             <div className="absolute inset-0">
               <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-[#BDFE4E] rounded-full animate-ping"></div>
               <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-[#BDFE4E] rounded-full animate-ping delay-200"></div>
@@ -125,17 +117,17 @@ export default function OurNetwork() {
               <div className="absolute top-1/2 left-1/3 w-3 h-3 bg-[#BDFE4E] rounded-full animate-ping delay-1000"></div>
             </div>
 
-            {/* Center Icon */}
             <div className="relative z-10">
               <div className="w-32 h-32 bg-[#BDFE4E]/10 rounded-full flex items-center justify-center border-2 border-[#BDFE4E]/30">
                 <MapPin size={48} className="text-[#BDFE4E]" />
               </div>
-              {/* Pulse rings */}
+
+              {/* pulse */}
               <div className="absolute inset-0 rounded-full border-2 border-[#BDFE4E]/20 animate-ping"></div>
               <div className="absolute inset-0 rounded-full border-2 border-[#BDFE4E]/10 animate-ping delay-500"></div>
             </div>
 
-            {/* Connecting lines */}
+            {/* cnnecting lines */}
             <svg className="absolute inset-0 w-full h-full opacity-20">
               <line x1="25%" y1="25%" x2="50%" y2="50%" stroke="#BDFE4E" strokeWidth="1" className="animate-pulse" />
               <line x1="66%" y1="33%" x2="50%" y2="50%" stroke="#BDFE4E" strokeWidth="1" className="animate-pulse delay-200" />
@@ -144,7 +136,6 @@ export default function OurNetwork() {
             </svg>
           </div>
 
-          {/* Bottom Info Bar */}
           <div className="bg-[#0a0a0a] p-6 border-t border-gray-800">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="text-center md:text-left">

@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import Xlogo from '../assets/xlogoo.png'
+import Xlogo from '../../assets/xlogoo.png';
 
 export default function LoadingScreen({ onLoadingComplete }) {
   const [phase, setPhase] = useState('text');
-  const [logo, setLogoImg] = useState('png')
 
   useEffect(() => {
     const textTimer = setTimeout(() => {
@@ -18,14 +17,10 @@ export default function LoadingScreen({ onLoadingComplete }) {
       onLoadingComplete();
     }, 5100);
 
-    const logoImg = setTimeout(() => {
-      setLogoImg();
-    }, 8000);
     return () => {
       clearTimeout(textTimer);
       clearTimeout(logoTimer);
       clearTimeout(completeTimer);
-      clearTimeout(logoImg);
     };
   }, [onLoadingComplete]);
 
@@ -35,43 +30,22 @@ export default function LoadingScreen({ onLoadingComplete }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(189,254,78,0.08),transparent_60%)]"></div>
       </div>
 
-{phase === 'text' && (
-  <div className="absolute inset-0 flex items-center gap-0 justify-center z-100">
-    <div className="text-center">
-      <h1 className="text-7xl font-light tracking-tight text-white" style={{ fontFamily: 'Comfortaa, sans-serif' }}>
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '0ms' }}>e</span>
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '50ms' }}>v</span>
-        <span className="inline-block animate-letter-fade font-medium m-0 p-0" style={{ animationDelay: '100ms' }}>o</span>
-        <span
-          className="inline-block animate-letter-fade align-middle relative"
-          style={{ animationDelay: '300ms' }}
-        >
-          <img
-            src={Xlogo}
-            className="inline-block h-[110px] w-auto align-middle gap-0 ml-0 mr-0"
-            alt="logo"
-          />
-        </span>
+      {phase === 'text' && (
+        <div className="absolute inset-0 flex items-center gap-0 justify-center z-100">
+          <div className="text-center">
+            <h1 className="text-7xl font-light tracking-tight text-white leading-none" style={{ fontFamily: 'Comfortaa, sans-serif' }}>
+              <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '0ms' }}>e</span><span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '50ms' }}>v</span><span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '100ms' }}>o</span><span className="inline-block animate-letter-fade align-middle relative" style={{ animationDelay: '300ms' }}><img src={Xlogo} alt="logo" className="inline-block h-[120px] w-auto align-middle m-0 p-0" style={{ verticalAlign: 'middle', }} /></span><span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '200ms' }}>c</span><span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '300ms' }}>h</span><span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '400ms' }}>a</span><span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '500ms' }}>r</span><span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '600ms' }}>g</span><span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '700ms' }}>e</span>
+              <h1>
+                <span className="absolute mt-0 ml-5 text-sm font-light tracking-wider inline-block animate-letter-fade" style={{ animationDelay: '700ms', fontFamily: 'Comfortaa, sans-serif' }}>
+                  POWERING THE FUTURE
+                </span>
+              </h1>
+            </h1>
 
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '200ms' }}>c</span>
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '300ms' }}>h</span>
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '400ms' }}>a</span>
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '500ms' }}>r</span>
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '600ms' }}>g</span>
-        <span className="inline-block animate-letter-fade font-medium" style={{ animationDelay: '700ms' }}>e</span>
-        <h1>
-        <span className="absolute mt-0 ml-5 text-sm font-light tracking-wider inline-block animate-letter-fade" style={{ animationDelay: '700ms', fontFamily: 'Comfortaa, sans-serif' }}>
-            POWERING THE FUTURE
-          </span>
-        </h1>
-
-      </h1>
-
-      <div className="h-1 bg-gradient-to-r from-transparent via-[#BDFE4E] to-transparent mt-6 animate-line-expand"></div>
-    </div>
-  </div>
-)}
-
+            <div className="h-1 bg-gradient-to-r from-transparent via-[#BDFE4E] to-transparent mt-6 animate-line-expand"></div>
+          </div>
+        </div>
+      )}
 
       <div className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
         phase === 'loading' ? 'scale-100 opacity-100' : phase === 'opening' ? 'scale-125 opacity-0' : 'scale-90 opacity-0'
