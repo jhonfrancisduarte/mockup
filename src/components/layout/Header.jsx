@@ -75,9 +75,15 @@ const Header = () => {
           </nav>
 
           <div className="hidden lg:flex items-center space-x-4">
-            <span className="cursor-pointer relative px-6 py-2s text-black font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-              <span className="relative text-white z-10"><Download className="w-6 h-6" />Download App</span>
-            </span>
+            {/* FIXED: use inline-flex + items-center + gap for proper icon + text alignment and corrected py class */}
+            <button
+              type="button"
+              className="cursor-pointer inline-flex items-center gap-2 px-6 py-2 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              <Download className="w-5 h-5" />
+              <span className="relative z-10">Download App</span>
+            </button>
+
             <button
               type="button"
               className="cursor-pointer relative px-6 py-2 bg-[#BDFE4E] text-black font-semibold rounded-lg hover:bg-[#a8e842] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"

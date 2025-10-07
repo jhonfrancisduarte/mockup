@@ -7,9 +7,21 @@ import Phone2 from '../assets/appphone2.png';
 
 export default function HeroSection({ scrollY, sectionOpacity }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsVisible(true);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const parallaxOffset = scrollY * 0.5;
@@ -24,30 +36,121 @@ export default function HeroSection({ scrollY, sectionOpacity }) {
       <div className="absolute inset-0 opacity-30">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="circuit-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <circle cx="9" cy="70" r="5" fill="#BDFE4E" opacity="0.3" />
-              <circle cx="90" cy="90" r="2" fill="#BDFE4E" opacity="0.3" />
-              <line x1="10" y1="10" x2="50" y2="50" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
-              <line x1="50" y1="50" x2="90" y2="90" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
-              <rect x="48" y="48" width="4" height="4" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.3" />
-              <rect x="8" y="8" width="4" height="4" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.3" />
-              <rect x="88" y="88" width="4" height="4" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.3" />
-              <line x1="30" y1="10" x2="30" y2="30" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
-              <line x1="30" y1="30" x2="50" y2="30" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
-              <line x1="70" y1="50" x2="70" y2="70" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
-              <line x1="50" y1="70" x2="70" y2="70" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.2" />
-              <circle cx="30" cy="30" r="1.5" fill="#BDFE4E" opacity="0.4" />
-              <circle cx="70" cy="70" r="1.5" fill="#BDFE4E" opacity="0.4" />
+            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.1"/>
             </pattern>
+            <radialGradient id="chargeGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#BDFE4E" stopOpacity="0.3"/>
+              <stop offset="100%" stopColor="#BDFE4E" stopOpacity="0"/>
+            </radialGradient>
           </defs>
-          <rect width="100%" height="100%" fill="url(#circuit-pattern)" />
+          <rect width="100%" height="100%" fill="url(#grid)"/>
         </svg>
       </div>
 
-      <div className="absolute inset-0">
+      <div
+        className="absolute inset-0 transition-transform duration-500 ease-out"
+        style={{
+          transform: `translate(${(mousePosition.x - 50) * 0.05}px, ${(mousePosition.y - 50) * 0.05}px)`
+        }}
+      >
         <div className="absolute top-20 left-10 w-32 h-32 bg-[#BDFE4E]/5 rounded-full blur-xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-48 h-48 bg-[#BDFE4E]/3 rounded-full blur-2xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-[#BDFE4E]/5 rounded-full blur-lg animate-bounce delay-500"></div>
+
+        <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-[#BDFE4E]/10 rounded-full blur-2xl animate-pulse delay-700"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-28 h-28 bg-[#BDFE4E]/8 rounded-full blur-xl animate-pulse delay-1500"></div>
+      </div>
+
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="energyFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#BDFE4E" stopOpacity="0"/>
+            <stop offset="50%" stopColor="#BDFE4E" stopOpacity="0.6"/>
+            <stop offset="100%" stopColor="#BDFE4E" stopOpacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <g
+          style={{
+            transform: `translate(${(mousePosition.x - 50) * 0.1}px, ${(mousePosition.y - 50) * 0.1}px)`,
+            transition: 'transform 0.3s ease-out'
+          }}
+        >
+          <circle cx="15%" cy="20%" r="4" fill="#BDFE4E" opacity="0.4">
+            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="85%" cy="30%" r="3" fill="#BDFE4E" opacity="0.3">
+            <animate attributeName="r" values="3;5;3" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="25%" cy="70%" r="3" fill="#BDFE4E" opacity="0.4">
+            <animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="75%" cy="80%" r="4" fill="#BDFE4E" opacity="0.3">
+            <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="50%" cy="50%" r="3" fill="#BDFE4E" opacity="0.35">
+            <animate attributeName="r" values="3;5;3" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <g style={{
+          transform: `translate(${(mousePosition.x - 50) * -0.08}px, ${(mousePosition.y - 50) * -0.08}px)`,
+          transition: 'transform 0.4s ease-out'
+        }}>
+          <path d="M 10% 25% Q 30% 35%, 50% 45%" stroke="url(#energyFlow)" strokeWidth="2" fill="none" opacity="0.3" strokeDasharray="10,5">
+            <animate attributeName="stroke-dashoffset" from="0" to="15" dur="1.5s" repeatCount="indefinite"/>
+          </path>
+          <path d="M 90% 35% Q 70% 45%, 50% 55%" stroke="url(#energyFlow)" strokeWidth="2" fill="none" opacity="0.3" strokeDasharray="10,5">
+            <animate attributeName="stroke-dashoffset" from="0" to="15" dur="1.8s" repeatCount="indefinite"/>
+          </path>
+          <path d="M 20% 75% Q 35% 65%, 50% 60%" stroke="url(#energyFlow)" strokeWidth="2" fill="none" opacity="0.25" strokeDasharray="10,5">
+            <animate attributeName="stroke-dashoffset" from="0" to="15" dur="2s" repeatCount="indefinite"/>
+          </path>
+        </g>
+
+        <g className="charging-stations">
+          {[
+            { x: 10, y: 15, delay: 0 },
+            { x: 90, y: 25, delay: 0.5 },
+            { x: 15, y: 85, delay: 1 },
+            { x: 85, y: 75, delay: 1.5 }
+          ].map((station, i) => (
+            <g key={i} style={{
+              transform: `translate(${(mousePosition.x - 50) * 0.06}px, ${(mousePosition.y - 50) * 0.06}px)`,
+              transition: 'transform 0.5s ease-out'
+            }}>
+              <rect x={`${station.x}%`} y={`${station.y}%`} width="8" height="12" rx="1" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.3"/>
+              <rect x={`${station.x + 1}%`} y={`${station.y + 3}%`} width="6" height="6" rx="0.5" fill="#BDFE4E" opacity="0.15">
+                <animate attributeName="opacity" values="0.15;0.4;0.15" dur="2s" begin={`${station.delay}s`} repeatCount="indefinite"/>
+              </rect>
+              <line x1={`${station.x + 4}%`} y1={`${station.y + 4}%`} x2={`${station.x + 4}%`} y2={`${station.y + 8}%`} stroke="#BDFE4E" strokeWidth="0.8" opacity="0.5">
+                <animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.5s" begin={`${station.delay}s`} repeatCount="indefinite"/>
+              </line>
+            </g>
+          ))}
+        </g>
+      </svg>
+
+      <div
+        className="absolute inset-0"
+        style={{
+          transform: `translate(${(mousePosition.x - 50) * -0.03}px, ${(mousePosition.y - 50) * -0.03}px)`,
+          transition: 'transform 0.6s ease-out'
+        }}
+      >
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-[#BDFE4E] rounded-full animate-pulse"
+            style={{
+              left: `${15 + i * 12}%`,
+              top: `${20 + (i % 3) * 25}%`,
+              opacity: 0.3,
+              animationDelay: `${i * 0.3}s`
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative z-10 container mx-auto px-4 pt-20 lg:pt-24 min-h-screen flex items-center">

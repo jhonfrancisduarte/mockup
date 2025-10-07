@@ -35,14 +35,13 @@ export default function Footer() {
 
   return (
     <>
-
-      <footer className="relative border-t border-gray-800 bg-[#2a2a2a] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
+      <footer className="relative border-t border-gray-200 bg-white text-gray-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div
             className="absolute inset-0"
             style={{
               backgroundImage:
-                'radial-gradient(circle at 1px 1px, rgba(189, 254, 78, 0.3) 1px, transparent 0)',
+                'radial-gradient(circle at 1px 1px, rgba(189,254,78,0.06) 1px, transparent 0)',
               backgroundSize: '40px 40px'
             }}
           />
@@ -52,11 +51,11 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
             {Object.entries(footerLinks).map(([category, links]) => (
               <div key={category}>
-                <h3 className="text-[#BDFE4E] font-bold text-lg mb-4">{category}</h3>
+                <h3 className="text-[#2b7a14] font-bold text-lg mb-4">{category}</h3>
                 <ul className="space-y-2">
                   {links.map((link) => (
                     <li key={link}>
-                      <a href="#" className="text-gray-400 hover:text-[#BDFE4E] transition-colors duration-300 text-sm">
+                      <a href="#" className="text-gray-600 hover:text-[#2b7a14] transition-colors duration-300 text-sm">
                         {link}
                       </a>
                     </li>
@@ -66,24 +65,24 @@ export default function Footer() {
             ))}
 
             <div>
-              <h3 className="text-[#BDFE4E] font-bold text-lg mb-4">Get in touch</h3>
+              <h3 className="text-[#2b7a14] font-bold text-lg mb-4">Get in touch</h3>
 
-              <ul className="space-y-3 text-sm text-gray-400">
+              <ul className="space-y-3 text-sm text-gray-600">
                 <li className="flex items-start gap-3">
-                  <Mail size={18} className="text-[#BDFE4E] mt-1 flex-shrink-0" />
-                  <a href="mailto:evoxcharge@tdgworld.com" className="break-words hover:text-[#BDFE4E]">
+                  <Mail size={18} className="text-[#2b7a14] mt-1 flex-shrink-0" />
+                  <a href="mailto:evoxcharge@tdgworld.com" className="break-words hover:text-[#2b7a14]">
                     evoxcharge@tdgworld.com
                   </a>
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <Phone size={18} className="text-[#BDFE4E] mt-1 flex-shrink-0" />
-                  <a href="tel:+639399320844" className="hover:text-[#BDFE4E]">0939 932 0844</a>
+                  <Phone size={18} className="text-[#2b7a14] mt-1 flex-shrink-0" />
+                  <a href="tel:+639399320844" className="hover:text-[#2b7a14]">0939 932 0844</a>
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <MapPin size={18} className="text-[#BDFE4E] mt-1 flex-shrink-0" />
-                  <address className="not-italic leading-snug">
+                  <MapPin size={18} className="text-[#2b7a14] mt-1 flex-shrink-0" />
+                  <address className="not-italic leading-snug text-gray-600">
                     TDG Inhub AFP-RSBS Industrial Park<br />
                     KM12 cor C5, Wester Bicutan,<br />
                     Taguig, Philippines
@@ -93,15 +92,14 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <div className="rounded-lg flex items-center justify-center">
                 <img src={Logo} alt="" className='h-12' />
               </div>
-
             </div>
 
-            <p className="text-gray-400 text-sm text-center">
+            <p className="text-gray-500 text-sm text-center">
               © 2025 xCharge+. All rights reserved. Powering the future of electric mobility.
             </p>
           </div>
@@ -117,7 +115,6 @@ export default function Footer() {
         }}
       >
         <div className="relative">
-
           <div
             id="floating-socials"
             className={`absolute bottom-16 right-0 z-10 flex flex-col gap-3 transition-all duration-300 transform ${
@@ -144,7 +141,9 @@ export default function Footer() {
               );
             })}
           </div>
+
           {!visible && <div className="absolute inset-0 w-16 h-16 bg-[#BDFE4E] rounded-full animate-ping opacity-20 pointer-events-none" />}
+
           <button
             onClick={() => setPinned((v) => !v)}
             aria-pressed={pinned}
