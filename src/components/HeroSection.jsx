@@ -46,7 +46,7 @@ export default function HeroSection({ scrollY, sectionOpacity }) {
           aria-hidden="true"
         />
 
-        <div className="absolute inset-0 bg-black/80 mix-blend-multiply" aria-hidden="true" />
+        <div className="absolute inset-0 bg-black/78 mix-blend-multiply" aria-hidden="true" />
       </div>
 
       <div
