@@ -4,6 +4,7 @@ import GooglePlay from '../assets/google-play.png';
 import AppStore from '../assets/appstore.png';
 import Phone1 from '../assets/appphone3.png';
 import Phone2 from '../assets/appphone2.png';
+import BackgroundVideo from '../assets/1008.mov';
 
 export default function HeroSection({ scrollY, sectionOpacity }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,19 +34,19 @@ export default function HeroSection({ scrollY, sectionOpacity }) {
       className="relative min-h-screen overflow-hidden bg-[#0a0a0a] transition-opacity duration-700 ease-out"
       style={{ opacity: sectionOpacity }}
     >
-      <div className="absolute inset-0 opacity-30">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#BDFE4E" strokeWidth="0.5" opacity="0.1"/>
-            </pattern>
-            <radialGradient id="chargeGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#BDFE4E" stopOpacity="0.3"/>
-              <stop offset="100%" stopColor="#BDFE4E" stopOpacity="0"/>
-            </radialGradient>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)"/>
-        </svg>
+      {/* vid bg */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <video
+          src={BackgroundVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          aria-hidden="true"
+        />
+
+        <div className="absolute inset-0 bg-black/77 mix-blend-multiply" aria-hidden="true" />
       </div>
 
       <div
@@ -61,7 +62,6 @@ export default function HeroSection({ scrollY, sectionOpacity }) {
         <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-[#BDFE4E]/10 rounded-full blur-2xl animate-pulse delay-700"></div>
         <div className="absolute bottom-1/3 left-1/4 w-28 h-28 bg-[#BDFE4E]/8 rounded-full blur-xl animate-pulse delay-1500"></div>
       </div>
-
       <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="energyFlow" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -153,6 +153,7 @@ export default function HeroSection({ scrollY, sectionOpacity }) {
         ))}
       </div>
 
+      {/* MAIN CONTENT */}
       <div className="relative z-10 container mx-auto px-4 pt-20 lg:pt-24 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           <div
