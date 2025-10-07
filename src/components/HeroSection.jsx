@@ -42,7 +42,7 @@ export default function HeroSection({ scrollY, sectionOpacity }) {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover blur-[3px]"
           aria-hidden="true"
         />
 

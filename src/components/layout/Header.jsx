@@ -34,7 +34,7 @@ const Header = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto px-4 bg-[#0A0A0A] sm:px-6 lg:px-8 border-b border-gray-600 z-11">
+      <div className="mx-auto px-4 bg-[#0A0A0A] sm:px-6 lg:px-8 border-b border-gray-800 z-11">
         <div className="flex justify-between items-center h-16 lg:h-20">
           <div className="flex items-center space-x-2 group cursor-pointer">
             <div className="relative">
