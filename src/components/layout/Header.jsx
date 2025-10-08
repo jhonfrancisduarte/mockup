@@ -1,7 +1,6 @@
-// src/components/layout/Header.jsx
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Download } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from '../../assets/logowhite.jpeg';
 import navItems from '../../config/nav';
 
@@ -9,6 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -23,8 +23,24 @@ const Header = () => {
   const getItemPath = (item) => {
     if (item.path) return item.path;
     if (item.name === 'Business Solutions') return '/business-solutions';
+    if (item.name === 'Company') return '/company';
     return null;
   };
+
+  // returns true if the item (or any of its dropdown children) matches current path
+  const isItemActive = (item) => {
+    const path = getItemPath(item);
+    if (path) return location.pathname === path;
+    if (item.dropdown && Array.isArray(item.dropdown)) {
+      return item.dropdown.some((sub) => typeof sub === 'object' && sub.path && location.pathname === sub.path);
+    }
+    return false;
+  };
+
+  // classes for active & normal nav items (active uses same look as hover)
+  const baseNavClasses = 'flex items-center space-x-1 px-4 py-2 font-medium transition-all duration-200 rounded-lg';
+  const inactiveText = 'text-gray-300 hover:bg-[#BDFE4E] hover:text-black';
+  const activeText = 'bg-[#BDFE4E] text-black';
 
   return (
     <header
@@ -48,13 +64,15 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => {
               const path = getItemPath(item);
-              const hasDropdown = !!item.dropdown && !path; // only show dropdown if there's no path (Business Solutions will have a path)
+              const hasDropdown = !!item.dropdown && !path;
+              const active = isItemActive(item);
+
               return (
                 <div key={item.name} className="relative group">
                   {path ? (
                     <Link
                       to={path}
-                      className="flex items-center space-x-1 px-4 py-2 text-gray-300 font-medium transition-all duration-200 rounded-lg hover:bg-[#BDFE4E] hover:text-black"
+                      className={`${baseNavClasses} ${active ? activeText : inactiveText}`}
                     >
                       <span>{item.name}</span>
                     </Link>
@@ -64,12 +82,12 @@ const Header = () => {
                         type="button"
                         onClick={() => hasDropdown && toggleDropdown(item.name)}
                         aria-expanded={activeDropdown === item.name}
-                        className="flex items-center space-x-1 px-4 py-2 text-gray-300 font-medium transition-all duration-200 rounded-lg hover:bg-[#BDFE4E] hover:text-black"
+                        className={`${baseNavClasses} ${active ? activeText : inactiveText} flex items-center`}
                       >
                         <span>{item.name}</span>
                         {hasDropdown && (
                           <ChevronDown
-                            className={`w-4 h-4 transition-transform duration-200 ${
+                            className={`w-4 h-4 ml-1 transition-transform duration-200 ${
                               activeDropdown === item.name ? 'rotate-180' : ''
                             }`}
                           />
@@ -85,13 +103,13 @@ const Header = () => {
                           }`}
                         >
                           {item.dropdown.map((subItem, idx) => {
-                            // support subItem as string or { name, path }
                             if (typeof subItem === 'object' && subItem.path) {
+                              const subActive = location.pathname === subItem.path;
                               return (
                                 <Link
                                   key={subItem.name + idx}
                                   to={subItem.path}
-                                  className="block px-4 py-3 text-gray-300 hover:text-black hover:bg-[#BDFE4E] transition-colors duration-200 border-b border-gray-800 last:border-b-0"
+                                  className={`block px-4 py-3 text-gray-300 hover:text-black hover:bg-[#BDFE4E] transition-colors duration-200 border-b border-gray-800 last:border-b-0 ${subActive ? 'bg-[#BDFE4E] text-black' : ''}`}
                                 >
                                   {subItem.name}
                                 </Link>
@@ -154,13 +172,15 @@ const Header = () => {
             {navItems.map((item) => {
               const path = getItemPath(item);
               const hasDropdown = !!item.dropdown && !path;
+              const active = isItemActive(item);
+
               return (
                 <div key={item.name}>
                   {path ? (
                     <Link
                       to={path}
                       onClick={() => setIsMenuOpen(false)}
-                      className="w-full block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors duration-200"
+                      className={`w-full block px-4 py-3 rounded-lg transition-colors duration-200 ${active ? 'bg-[#BDFE4E] text-black' : 'text-gray-300 hover:text-white hover:bg-gray-800'}`}
                     >
                       <span className="font-medium">{item.name}</span>
                     </Link>
@@ -169,7 +189,7 @@ const Header = () => {
                       <button
                         type="button"
                         onClick={() => hasDropdown && toggleDropdown(item.name)}
-                        className="w-full flex items-center justify-between px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors duration-200"
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors duration-200 ${active ? 'bg-[#BDFE4E] text-black' : 'text-gray-300 hover:text-white hover:bg-gray-800'}`}
                       >
                         <span className="font-medium">{item.name}</span>
                         {hasDropdown && (
@@ -189,12 +209,13 @@ const Header = () => {
                         >
                           {item.dropdown.map((subItem, idx) => {
                             if (typeof subItem === 'object' && subItem.path) {
+                              const subActive = location.pathname === subItem.path;
                               return (
                                 <Link
                                   key={subItem.name + idx}
                                   to={subItem.path}
                                   onClick={() => setIsMenuOpen(false)}
-                                  className="block px-4 py-2 text-gray-400 hover:text-[#BDFE4E] hover:bg-gray-800 rounded-lg transition-colors duration-200"
+                                  className={`block px-4 py-2 rounded-lg transition-colors duration-200 ${subActive ? 'bg-[#BDFE4E] text-black' : 'text-gray-400 hover:text-[#BDFE4E] hover:bg-gray-800'}`}
                                 >
                                   {subItem.name}
                                 </Link>

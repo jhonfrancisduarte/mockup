@@ -41,7 +41,6 @@ export default function LoadingScreen({ onLoadingComplete }) {
                 </span>
               </h1>
             </h1>
-
             <div className="h-1 bg-gradient-to-r from-transparent via-[#BDFE4E] to-transparent mt-6 animate-line-expand"></div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import Phone1 from '../assets/appphone3.png';
 import Phone2 from '../assets/appphone2.png';
 import BackgroundVideo from '../assets/1008.mov';
 
+
 export default function HeroSection({ scrollY, sectionOpacity }) {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });

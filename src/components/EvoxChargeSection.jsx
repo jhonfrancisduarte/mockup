@@ -13,7 +13,7 @@ export default function EvoxChargeSection({ sectionsVisible, sectionOpacity }) {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Evo <span className="text-[#BDFE4E]">xCharge</span> for All
+            Evo<span className="text-[#BDFE4E]">xCharge</span> for All
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Comprehensive electric vehicle charging solutions designed for every need, from individual drivers to enterprise fleets.

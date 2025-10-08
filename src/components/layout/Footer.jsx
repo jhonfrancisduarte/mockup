@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
             {Object.entries(footerLinks).map(([category, links]) => (
               <div key={category}>
-                <h3 className="text-[#2b7a14] font-bold text-lg mb-4">{category}</h3>
+                <h3 className="text-black font-bold text-lg mb-4">{category}</h3>
                 <ul className="space-y-2">
                   {links.map((link) => (
                     <li key={link}>
@@ -65,23 +65,23 @@ export default function Footer() {
             ))}
 
             <div>
-              <h3 className="text-[#2b7a14] font-bold text-lg mb-4">Get in touch</h3>
+              <h3 className="text-black font-bold text-lg mb-4">Get in touch</h3>
 
               <ul className="space-y-3 text-sm text-gray-600">
                 <li className="flex items-start gap-3">
-                  <Mail size={18} className="text-[#2b7a14] mt-1 flex-shrink-0" />
+                  <Mail size={18} className="text-orange-300 mt-1 flex-shrink-0" />
                   <a href="mailto:evoxcharge@tdgworld.com" className="break-words hover:text-[#2b7a14]">
                     evoxcharge@tdgworld.com
                   </a>
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <Phone size={18} className="text-[#2b7a14] mt-1 flex-shrink-0" />
+                  <Phone size={18} className="text-green-400  mt-1 flex-shrink-0" />
                   <a href="tel:+639399320844" className="hover:text-[#2b7a14]">0939 932 0844</a>
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <MapPin size={18} className="text-[#2b7a14] mt-1 flex-shrink-0" />
+                  <MapPin size={18} className="text-blue-500 flex-shrink-0" />
                   <address className="not-italic leading-snug text-gray-600">
                     TDG Inhub AFP-RSBS Industrial Park<br />
                     KM12 cor C5, Wester Bicutan,<br />
@@ -117,7 +117,7 @@ export default function Footer() {
         <div className="relative">
           <div
             id="floating-socials"
-            className={`absolute bottom-16 right-0 z-10 flex flex-col gap-3 transition-all duration-300 transform ${
+            className={`absolute bottom-16 right-0 z-10 flex flex-col transition-all duration-300 transform ${
               visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
             }`}
             aria-hidden={!visible}

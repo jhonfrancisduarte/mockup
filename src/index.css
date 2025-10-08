@@ -8,3 +8,128 @@
   from { transform: rotate(360deg); }
   to { transform: rotate(0deg); }
 }
+
+@keyframes electric-flow {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes power-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes energy-particle {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(30px, -40px) scale(1.2);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-20px, -80px) scale(0.8);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(40px, -120px) scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(0, -160px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes lightning-flash {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  10% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  15% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes circuit-flow {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes power-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+.animate-electric-flow {
+  animation: electric-flow 2.5s ease-in infinite;
+}
+
+.animate-power-wave {
+  animation: power-wave 3s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.animate-energy-particle {
+  animation: energy-particle 4s linear infinite;
+}
+
+.animate-lightning-flash {
+  animation: lightning-flash 5s ease-in-out infinite;
+}
+
+.animate-circuit-flow {
+  animation: circuit-flow 4s linear infinite;
+}
+
+.animate-power-pulse {
+  animation: power-pulse 3s ease-in-out infinite;
+}
