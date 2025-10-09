@@ -4,7 +4,7 @@ import GooglePlay from '../assets/google-play.png';
 import AppStore from '../assets/appstore.png';
 import Phone1 from '../assets/appphone3.png';
 import Phone2 from '../assets/appphone2.png';
-import BackgroundVideo from '../assets/1008.mov';
+import BackgroundVideo from '../assets/1009.mov';
 
 
 export default function HeroSection({ scrollY, sectionOpacity }) {

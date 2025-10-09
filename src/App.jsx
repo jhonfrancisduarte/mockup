@@ -5,8 +5,10 @@ import './index.css';
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import LoadingScreen from "./components/common/LoadingScreen";
+import SocialSidebar from "./components/common/SocialSidebar";
 import BusinessSolution from "./pages/BusinessSolution";
 import Company from "./pages/Company";
+
 
 export default function App() {
   const [showContent, setShowContent] = useState(false);
@@ -27,6 +29,7 @@ export default function App() {
             </Routes>
           </main>
           <Footer />
+          <SocialSidebar />
         </>
       )}
     </>
