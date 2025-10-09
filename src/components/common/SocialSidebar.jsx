@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Phone, Mail, MessageCircle, QrCode } from 'lucide-react';
+import Qr from "../../assets/qr.png"
+
 
 function SocialSidebar() {
   const [isHovered, setIsHovered] = useState(false);
@@ -27,7 +29,7 @@ function SocialSidebar() {
       icon: <QrCode size={20} />,
       label: 'Scan to Download App',
       value: 'PlayStore QR Code',
-      qrCode: 'https://www.qrcode-monkey.com',
+      qrCode: Qr,
       type: 'qr',
     },
   ];
