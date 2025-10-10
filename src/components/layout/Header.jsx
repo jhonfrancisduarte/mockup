@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Download } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import Logo from '../../assets/logowhite.jpeg';
+import Logo from '../../assets/EVOX2.png';
 import navItems from '../../config/nav';
 
 const Header = () => {
