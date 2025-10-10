@@ -5,7 +5,7 @@ const navItems = [
   },
   {
     name: 'Business Solutions',
-    dropdown: ['Fleet Management', 'Workplace Charging', 'Enterprise']
+    dropdown: ['Host a Site', 'Partner with Us']
   },
   {
     name: 'Ecosystem',
@@ -13,9 +13,11 @@ const navItems = [
   },
   {
     name: 'Company',
-    dropdown: ['About Us', 'Careers', 'News']
+    dropdown: ['About Us', 'Sustainability', 'Newsroom', 'Careers', 'Contact Us']
   },
-  { name: 'Support' }
+  { name: 'Support',
+     dropdown: ['FAQ', 'Hotline']
+  }
 ];
 
 export default navItems;

@@ -56,7 +56,6 @@ export default function Hero() {
         if (elementTop < windowHeight && elementTop > 0) {
           const fadeInDistance = windowHeight * 0.6;
           const rawOpacity = (windowHeight - elementTop) / fadeInDistance;
-
           const easedOpacity = Math.pow(rawOpacity, 0.5);
           return Math.max(0.3, Math.min(1, easedOpacity));
         }
