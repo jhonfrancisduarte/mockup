@@ -133,3 +133,8 @@
 .animate-power-pulse {
   animation: power-pulse 3s ease-in-out infinite;
 }
+
+
+img[alt="Google"] {
+  display: none !important;
+}

@@ -27,7 +27,6 @@ const Header = () => {
     return null;
   };
 
-  // returns true if the item (or any of its dropdown children) matches current path
   const isItemActive = (item) => {
     const path = getItemPath(item);
     if (path) return location.pathname === path;
@@ -37,7 +36,6 @@ const Header = () => {
     return false;
   };
 
-  // classes for active & normal nav items (active uses same look as hover)
   const baseNavClasses = 'flex items-center space-x-1 px-4 py-2 font-medium transition-all duration-200 rounded-lg';
   const inactiveText = 'text-gray-300 hover:bg-[#BDFE4E] hover:text-black';
   const activeText = 'bg-[#BDFE4E] text-black';

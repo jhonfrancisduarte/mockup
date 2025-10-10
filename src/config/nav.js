@@ -1,7 +1,7 @@
 const navItems = [
   {
     name: 'EV Drivers',
-    dropdown: ['Find Charging', 'Mobile App', 'Pricing Plans']
+    dropdown: ['xCharge+ Mobile', 'How to Charge', 'Charging Solutions', 'EV 101']
   },
   {
     name: 'Business Solutions',
