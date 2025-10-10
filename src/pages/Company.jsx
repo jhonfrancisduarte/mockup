@@ -77,7 +77,7 @@ export default function Company() {
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
 
 
-          <g className="circuit-lines" opacity="0.2">
+      {/*     <g className="circuit-lines" opacity="0.2">
             <path d="M 0 30 L 100 30 M 0 50 L 100 50 M 0 70 L 100 70"
                   stroke="#BDFE4E"
                   strokeWidth="0.5"
@@ -92,10 +92,10 @@ export default function Company() {
                   vectorEffect="non-scaling-stroke">
               <animate attributeName="stroke-dashoffset" values="0;15;0" dur="10s" repeatCount="indefinite" />
             </path>
-          </g>
+          </g> */}
         </svg>
 
-        <div className="absolute top-[15%] left-[8%] w-20 h-20 opacity-30">
+       {/*  <div className="absolute top-[15%] left-[8%] w-20 h-20 opacity-30">
           <div className="absolute inset-0 border-2 border-[#BDFE4E] rounded-lg transform rotate-45 animate-spin" style={{ animationDuration: '20s' }}></div>
           <div className="absolute inset-2 border-2 border-[#BDFE4E]/50 rounded-lg transform -rotate-45"></div>
           <div className="absolute inset-0 bg-[#BDFE4E]/10 rounded-lg transform rotate-45 blur-sm"></div>
@@ -114,10 +114,10 @@ export default function Company() {
         <div className="absolute top-[60%] right-[25%] w-14 h-14 opacity-25">
           <div className="w-full h-full border-2 border-[#BDFE4E] rounded-lg animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute inset-0 bg-[#BDFE4E]/15 rounded-lg blur-sm"></div>
-        </div>
+        </div> */}
 
-        <div className="absolute inset-0 bg-gradient-to-b from-[#BDFE4E]/[0.02] via-transparent to-[#BDFE4E]/[0.05]"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#BDFE4E]/[0.02] to-transparent"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#BDFE4E]/[0.02] via-transparent to-[#BDFE4E]/[0.05]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#BDFE4E]/[0.02] to-transparent"></div> */}
       </div>
 
       <div className="relative z-10">
@@ -129,7 +129,7 @@ export default function Company() {
           <div className={`max-w-7xl mx-auto w-full transition-all duration-1000 relative z-10 ${visibleSections.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <div className={`inline-flex items-center gap-2 bg-[#BDFE4E]/10 text-[#BDFE4E] px-10 py-4 text-sm font-medium border border-[#BDFE4E]/30 mb-6 transition-all duration-700 delay-200 ${visibleSections.hero ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+                <div className={`inline-flex items-center gap-2 bg-[#BDFE4E]/10 text-[#BDFE4E] px-4 py-2 rounded-full text-sm font-semibold border border-[#BDFE4E]/30 mb-6  ${visibleSections.hero ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
                   COMPANY
                 </div>
 
@@ -272,7 +272,7 @@ export default function Company() {
                     Committed to a <span className="text-[#BDFE4E]">Greener Future</span>
                   </h2>
 
-                  <div className="space-y-4 text-gray-400 leading-relaxed text-lg">
+                  <div className="space-y-4 text-gray-300 leading-relaxed text-lg">
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta nec nibh a dictum. Suspendisse potenti. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In interdum ultricies lectus, a efficitur tortor venenatis quis.
                     </p>

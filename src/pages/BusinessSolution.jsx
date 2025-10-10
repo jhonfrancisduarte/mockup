@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import {Check, Zap, ArrowRight, Users, ClipboardCheck, Wrench, Headphones, MonitorSmartphone } from 'lucide-react';
+import {Check, ArrowRight, Users, ClipboardCheck, Wrench, Headphones, MonitorSmartphone } from 'lucide-react';
 import Commercial from "../assets/commercial.png"
 import Sm from "../assets/SmCharge.png"
 import Fleet from "../assets/fleet.png"

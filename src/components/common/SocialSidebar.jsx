@@ -1,10 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Phone, Mail, MessageCircle, QrCode } from 'lucide-react';
 import Qr from "../../assets/qr.png"
 
-
 function SocialSidebar() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const threshold = 300;
+
+      setIsVisible(scrollPosition > threshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const socialLinks = [
     {
@@ -36,12 +50,14 @@ function SocialSidebar() {
 
   return (
     <div
-      className="fixed right-0 top-1/2 -translate-y-1/2 z-50"
+      className={`fixed right-0 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ${
+        isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className="bg-[#0a0a0a] border-l border-t border-b border-[#BDFE4E]/20 rounded-l-xl transition-all duration-1000 overflow-hidden shadow-2xl"
+        className="bg-[#0a0a0a] border-l border-t border-b border-[#BDFE4E]/20 rounded-l-xl overflow-hidden shadow-2xl transition-all duration-500 ease-in-out"
         style={{
           width: isHovered ? '280px' : '50px',
         }}
@@ -67,39 +83,49 @@ function SocialSidebar() {
                   </div>
 
                   <div
-                    className={`pr-4 transition-all duration-300 ${
-                      isHovered ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className="pr-4 whitespace-nowrap overflow-hidden transition-all duration-500 ease-in-out"
+                    style={{
+                      opacity: isHovered ? 1 : 0,
+                      transform: isHovered ? 'translateX(0)' : 'translateX(-10px)',
+                    }}
                   >
                     <span className="text-sm font-light text-white">{link.value}</span>
                   </div>
                 </a>
               ) : (
                 <div
-                  className="flex items-center transition-all duration-300 hover:bg-[#BDFE4E]/5 overflow-hidden"
+                  className="transition-all duration-500 ease-in-out hover:bg-[#BDFE4E]/5 overflow-hidden"
                   style={{
-                    height: isHovered ? 'auto' : '50px',
+                    height: isHovered ? '130px' : '50px',
                   }}
                 >
-                  <div className="w-[50px] h-[50px] flex items-center justify-center flex-shrink-0 text-[#BDFE4E]">
-                    {link.icon}
-                  </div>
+                  <div className="flex items-start">
+                    <div className="w-[50px] h-[50px] flex items-center justify-center flex-shrink-0 text-[#BDFE4E]">
+                      {link.icon}
+                    </div>
 
-                  <div
-                    className={`py-3 pr-3 transition-all duration-700 ${
-                      isHovered ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  >
-                    <p className="text-xs font-light mb-2 text-gray-300">{link.label}</p>
-                    {link.qrCode && (
-                      <div className="bg-white p-1 inline-block rounded">
-                        <img
-                          src={link.qrCode}
-                          alt={link.value}
-                          className="w-20 h-20"
-                        />
-                      </div>
-                    )}
+                    <div
+                      className="py-3 pr-3 transition-all duration-500 ease-in-out"
+                      style={{
+                        opacity: isHovered ? 1 : 0,
+                        transform: isHovered ? 'translateY(0)' : 'translateY(-10px)',
+                      }}
+                    >
+                      <p className="text-xs font-light mb-2 text-gray-300 whitespace-nowrap">{link.label}</p>
+                      {link.qrCode && (
+                        <div className="bg-white p-1 inline-block rounded transition-all duration-500 ease-in-out">
+                          <img
+                            src={link.qrCode}
+                            alt={link.value}
+                            className="w-20 h-20 transition-all duration-500 ease-in-out"
+                            style={{
+                              opacity: isHovered ? 1 : 0,
+                              transform: isHovered ? 'scale(1)' : 'scale(0.8)',
+                            }}
+                          />
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
@@ -111,13 +137,4 @@ function SocialSidebar() {
   );
 }
 
-function App() {
-  return (
-
-
-      <SocialSidebar />
-
-  );
-}
-
-export default App;
+export default SocialSidebar;
