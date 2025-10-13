@@ -100,7 +100,7 @@ export default function Footer() {
             </div>
 
             <p className="text-gray-500 text-sm text-center">
-              © 2025 xCharge+. All rights reserved. Powering the future of electric mobility.
+              © 2025 EVOxCharge. All rights reserved. Powering the future of electric mobility.
             </p>
           </div>
         </div>

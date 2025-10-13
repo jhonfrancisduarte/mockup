@@ -8,7 +8,7 @@ import LoadingScreen from "./components/common/LoadingScreen";
 import SocialSidebar from "./components/common/SocialSidebar";
 import BusinessSolution from "./pages/BusinessSolution";
 import Company from "./pages/Company";
-
+import Support from "./pages/Support";
 
 export default function App() {
   const [showContent, setShowContent] = useState(false);
@@ -26,6 +26,7 @@ export default function App() {
               <Route path="/" element={<Hero />} />
               <Route path="/business-solutions" element={<BusinessSolution />} />
               <Route path="/company" element={<Company />} />
+              <Route path="/support" element={<Support />} />
             </Routes>
           </main>
           <Footer />

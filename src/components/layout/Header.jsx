@@ -24,6 +24,7 @@ const Header = () => {
     if (item.path) return item.path;
     if (item.name === 'Business Solutions') return '/business-solutions';
     if (item.name === 'Company') return '/company';
+     if (item.name === 'Support') return '/support';
     return null;
   };
 

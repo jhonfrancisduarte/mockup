@@ -9,7 +9,7 @@ const navItems = [
   },
   {
     name: 'Ecosystem',
-    dropdown: ['Partners', 'Integrations', 'API']
+    dropdown: ['XCharge+ Mobile App', 'XCharge+ Web Platform', 'EV Chargers']
   },
   {
     name: 'Company',
