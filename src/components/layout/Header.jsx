@@ -24,7 +24,8 @@ const Header = () => {
     if (item.path) return item.path;
     if (item.name === 'Business Solutions') return '/business-solutions';
     if (item.name === 'Company') return '/company';
-     if (item.name === 'Support') return '/support';
+    if (item.name === 'Support') return '/support';
+    if (item.name === 'Ecosystem') return '/ecosystem';
     return null;
   };
 
@@ -274,8 +275,7 @@ const Header = () => {
                       <button
                         type="button"
                         onClick={() => hasDropdown && toggleDropdown(item.name)}
-                        className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors duration-200 ${active ? 'bg-[#BDFE4E] text-black' : 'text-gray-300 hover:text-white hover:bg-gray-800'}`}
-                      >
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors duration-200 ${active ? 'bg-[#BDFE4E] text-black' : 'text-gray-300 hover:text-white hover:bg-gray-800'}`}>
                         <span className="font-medium">{item.name}</span>
                         {hasDropdown && (
                           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />

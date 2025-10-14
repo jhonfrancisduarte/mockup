@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Hero from "./components/layout/Hero";
@@ -9,6 +10,7 @@ import SocialSidebar from "./components/common/SocialSidebar";
 import BusinessSolution from "./pages/BusinessSolution";
 import Company from "./pages/Company";
 import Support from "./pages/Support";
+import Ecosystem from "./pages/Ecosystem";
 
 export default function App() {
   const [showContent, setShowContent] = useState(false);
@@ -27,6 +29,7 @@ export default function App() {
               <Route path="/business-solutions" element={<BusinessSolution />} />
               <Route path="/company" element={<Company />} />
               <Route path="/support" element={<Support />} />
+              <Route path="/ecosystem" element={<Ecosystem />} />
             </Routes>
           </main>
           <Footer />
