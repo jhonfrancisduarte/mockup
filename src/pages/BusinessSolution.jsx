@@ -4,18 +4,13 @@ import Commercial from "../assets/commercial.png"
 import Sm from "../assets/SmCharge.png"
 import Fleet from "../assets/fleet.png"
 import Institution from "../assets/institution.png"
-import { FaBuilding } from "react-icons/fa";
 import { MdOutlineWork } from "react-icons/md";
 import { FaBagShopping } from "react-icons/fa6";
-import { FaParking } from "react-icons/fa";
+import { FaParking, FaTruck, FaHotel, FaUserShield, FaBuilding } from "react-icons/fa";
 import { BsFillFuelPumpFill } from "react-icons/bs";
-import { FaHotel } from "react-icons/fa";
-import { BiSolidInstitution } from "react-icons/bi";
-import { FaTruck } from "react-icons/fa";
+import { BiSolidInstitution, BiAward } from "react-icons/bi";
 import { LuPhilippinePeso } from "react-icons/lu";
-import { FaUserShield } from "react-icons/fa";
 import { SlGraph } from "react-icons/sl";
-import { BiAward } from "react-icons/bi";
 import { GiFocusedLightning } from "react-icons/gi";
 
 
