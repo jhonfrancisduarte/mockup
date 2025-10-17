@@ -12,6 +12,7 @@ import { BiSolidInstitution, BiAward } from "react-icons/bi";
 import { LuPhilippinePeso } from "react-icons/lu";
 import { SlGraph } from "react-icons/sl";
 import { GiFocusedLightning } from "react-icons/gi";
+import { BsLightningCharge } from "react-icons/bs";
 
 
 const useCases = [
@@ -726,7 +727,7 @@ export default function BusinessSolution() {
           <div className="text-center mt-12 md:mt-16 mb-20">
             <button className="group bg-gradient-to-r from-[#BDFE4E] to-[#a8e03d] hover:from-[#a8e03d] hover:to-[#BDFE4E] text-black font-bold px-8 md:px-10 py-4 md:py-5 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#BDFE4E]/40 cursor-pointer">
               <span className="flex items-center gap-2 md:gap-3">
-                <GiFocusedLightning size={20} className="md:w-6 md:h-6" />
+                <BsLightningCharge size={20} className="md:w-6 md:h-6" />
                 Get Started Today
                 <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform md:w-6 md:h-6" />
               </span>

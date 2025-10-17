@@ -3,6 +3,7 @@ import { Zap, Leaf, Briefcase, ArrowRight, TrendingUp, Users, Globe, Award } fro
 import { IoLocationSharp } from "react-icons/io5";
 import { FaUserTie } from "react-icons/fa6";
 import { FaAward } from "react-icons/fa6";
+import { MdBusinessCenter } from "react-icons/md";
 
 export default function Company() {
   const [visibleSections, setVisibleSections] = useState({
@@ -130,7 +131,7 @@ export default function Company() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <div className={`inline-flex items-center gap-2 bg-[#BDFE4E]/10 text-[#BDFE4E] px-4 py-2 rounded-full text-sm font-semibold border border-[#BDFE4E]/30 mb-6  ${visibleSections.hero ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
-                  COMPANY
+                  <MdBusinessCenter size={16}/>COMPANY
                 </div>
 
                 <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight transition-all duration-1000 delay-300 ${visibleSections.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
